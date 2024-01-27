@@ -1,0 +1,53 @@
+
+#####################################
+#              POWER                #
+#####################################
+[gcode_macro POWER_ON_PRINTER]
+description: Power ON printer
+  # Usage: SET_PIN PIN=power value=<0,1>
+
+  G4 P5000  # Пауза 5 секунд, для нормального включения принтера
+
+gcode:
+  # SET_PIN PIN=power value=1
+
+  {action_call_remote_method("set_device_power",
+                             device="Printer power",
+                             state="on")}
+
+[gcode_macro POWER_OFF_PRINTER]
+description: Power OFF printer
+  # Usage: SET_PIN PIN=power value=<0,1>
+
+gcode:
+  # SET_PIN PIN=power value=0
+
+  {action_call_remote_method("set_device_power",
+                             device="Printer power",
+                             state="off")}
+
+[gcode_macro M80]
+description: Power ON printer
+gcode:
+  POWER_ON_PRINTER
+
+[gcode_macro M81]
+description: Power OFF printer
+gcode:
+  POWER_OFF_PRINTER
+
+[gcode_macro SHUTDOWN_MACHINE]
+
+gcode:
+    {action_call_remote_method("shutdown_machine")}
+
+[idle_timeout]
+timeout: 600
+gcode:
+#  M117 "Idle timeout"
+   TURN_OFF_HEATERS
+   POWER_OFF_PRINTER
+   M84
+   M81
+   SHUTDOWN_MACHINE
+

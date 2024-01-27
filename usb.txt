@@ -1,0 +1,1 @@
+/dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_7543933343535131B0E1-if00
