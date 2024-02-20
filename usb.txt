@@ -1,1 +1,2 @@
 /dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_7543933343535131B0E1-if00
+/dev/serial/by-id/usb-Klipper_stm32f407xx_210039000A51333039383035-if00
