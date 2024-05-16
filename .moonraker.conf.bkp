@@ -58,7 +58,7 @@ load_on_startup = True
 
 [power Printer power]
 type = gpio
-pin = gpiochip0/gpio16
+pin = gpiochip0/gpio3
 off_when_shutdown = True
 restart_klipper_when_powered = true
 initial_state = off
